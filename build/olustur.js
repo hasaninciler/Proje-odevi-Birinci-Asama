@@ -198,12 +198,24 @@ const giris = [
     "sayısını, yiyecek-içecek stoğunu, temizlik ve bakım planını ve oda fiyatlarını belirler. " +
     "Bu planlamanın dayanağı olan rezervasyonların bir bölümünün gerçekleşmemesi, planlamanın " +
     "tamamını isabetsiz hale getirmektedir."),
-  p("Antonio, de Almeida ve Nunes (2019) tarafından yayımlanan ve bu çalışmada da kullanılan " +
+  p("Antonio, de Almeida ve Nunes (2019b) tarafından yayımlanan ve bu çalışmada da kullanılan " +
     "veri seti, iki otele ait 119.390 rezervasyon kaydını içermektedir. Bu kayıtların " +
     "%37,04’ünün iptal edilmiş olması, problemin istisnai bir durum değil, sektörün yapısal bir " +
     "sorunu olduğunu göstermektedir. Üç rezervasyondan birinden fazlasının gerçekleşmediği bir " +
     "ortamda, hangi rezervasyonun gerçekleşeceğini önceden bilmek doğrudan ekonomik değer " +
     "taşımaktadır."),
+  p("Rezervasyon iptalinin makine öğrenmesi ile tahmini, literatürde çalışılmış bir " +
+    "problemdir. Antonio, de Almeida ve Nunes (2017a), dört tatil köyüne ait verilerle " +
+    "kurdukları sınıflandırma modellerinde %90’ın üzerinde doğruluk elde etmiş ve bu sonucun, " +
+    "iptal tahmininin yüksek doğrulukla yapılamayacağı yönündeki önceki varsayımla " +
+    "çeliştiğini belirtmişlerdir. Aynı araştırmacılar (2017b) geliştirdikleri modeli bir " +
+    "otelin yönetim sistemine bağlayarak her gün yeniden eğitilen bir prototipe dönüştürmüş; " +
+    "2019 yılındaki çalışmalarında ise (2019a) bu prototipi iki otelde gerçek işletme " +
+    "ortamında denemişlerdir. Söz konusu denemede, iptal olasılığı yüksek olarak işaretlenen " +
+    "ve otel tarafından iletişime geçilen rezervasyonların, iletişime geçilmeyenlere kıyasla " +
+    "daha az iptal edildiği gözlenmiştir. Bu bulgu, iptal tahmininin yalnızca bir ölçüm " +
+    "aracı olmadığını, alınan aksiyonla birlikte iptal oranını fiilen düşürebildiğini " +
+    "göstermesi bakımından önemlidir."),
   p("Bu çalışmanın konusu olarak otel rezervasyon iptal tahmini probleminin seçilmesinin üç " +
     "temel nedeni bulunmaktadır. Birincisi, problem somut ve ölçülebilir bir iş değerine " +
     "sahiptir: doğru bir tahmin, otelin boş kalan odadan doğan gelir kaybını azaltmaktadır. " +
@@ -262,8 +274,12 @@ const bolum1 = [
 
   anaBaslik("1.3.", "Mevcut Çözümler ve Yetersizlikleri"),
   p("Otellerin iptal riskini yönetmek için hâlihazırda başvurduğu yöntemler üç başlıkta " +
-    "toplanabilir. Bu yöntemlerin her biri belirli bir fayda sağlamakla birlikte, ortak bir " +
-    "zaafa sahiptir: hiçbiri rezervasyonu müşteri düzeyinde değerlendirmemektedir."),
+    "toplanabilir. Antonio, de Almeida ve Nunes (2017a) de otellerin belirsizliğe karşı " +
+    "ağırlıklı olarak katı iptal politikaları ve aşırı rezervasyon uygulamalarına " +
+    "başvurduğunu, bu önlemlerin ise otelin hem gelirini hem itibarını olumsuz " +
+    "etkileyebildiğini belirtmektedir. Aşağıda ele alınan yöntemlerin her biri belirli bir " +
+    "fayda sağlamakla birlikte ortak bir zaafa sahiptir: hiçbiri rezervasyonu müşteri " +
+    "düzeyinde değerlendirmemektedir."),
 
   altBaslik("1.3.1.", "Deneyime Dayalı Sezgisel Değerlendirme"),
   p("Yaygın uygulamada iptal riski, otel yöneticisinin veya ön büro personelinin deneyimine " +
@@ -357,12 +373,14 @@ const bolum2 = [
   anaBaslik("2.1.", "Veri Setinin Kaynağı, Türü ve Boyutu"),
   p("Çalışmada kullanılan veri seti, Kaggle veri bilimi platformunda “Hotel Booking Demand” " +
     "adıyla yayımlanan açık erişimli veri setidir (Mostipak, 2020). Veri setinin özgün " +
-    "kaynağı, Antonio, de Almeida ve Nunes (2019) tarafından Data in Brief dergisinde " +
+    "kaynağı, Antonio, de Almeida ve Nunes (2019b) tarafından Data in Brief dergisinde " +
     "yayımlanan çalışmadır. Veriler Portekiz’de bulunan bir şehir oteli ile bir tatil " +
     "köyüne ait gerçek rezervasyon kayıtlarından oluşmaktadır ve 2015-2017 yıllarını " +
     "kapsamaktadır."),
   p("Veri seti tabüler türdedir ve virgülle ayrılmış değer (CSV) biçiminde saklanmaktadır. " +
-    "Veri setinin genel özellikleri Tablo-1’de verilmiştir."),
+    "Veri seti üzerindeki tüm inceleme ve ön işleme adımları, Google Colab ortamında pandas " +
+    "kütüphanesi (McKinney, 2010) kullanılarak gerçekleştirilmiştir. Veri setinin genel " +
+    "özellikleri Tablo-1’de verilmiştir."),
   tabloBasligi(1, "Veri Setinin Genel Özellikleri"),
   tablo(
     ["Özellik", "Değer"],
@@ -475,8 +493,8 @@ const bolum2 = [
     "kodlama tercih edilmemiş olsaydı bu sayı 230’un üzerine çıkacaktı."),
 
   anaBaslik("2.5.", "Veri Setinin Görselleştirilmesi"),
-  p("Veri setinin yapısı ve sınıf dağılımları, Google Colab ortamında Matplotlib ve Seaborn " +
-    "kütüphaneleri kullanılarak beş farklı grafikle incelenmiştir. Eksik veri dağılımını " +
+  p("Veri setinin yapısı ve sınıf dağılımları, Google Colab ortamında Matplotlib (Hunter, " +
+    "2007) ve Seaborn (Waskom, 2021) kütüphaneleri kullanılarak beş farklı grafikle incelenmiştir. Eksik veri dağılımını " +
     "gösteren Grafik-1 bölüm 2.2’de sunulmuştur. Bu bölümde kalan dört grafik ele " +
     "alınmaktadır."),
 
@@ -675,38 +693,42 @@ const kaynakca = [
   new Paragraph({
     alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
     indent: { hanging: 567 },
-    children: [new TextRun(
-      "Antonio, N., de Almeida, A. ve Nunes, L. (2019). Hotel booking demand datasets. " +
-      "Data in Brief, 22, 41-49. doi:10.1016/j.dib.2018.11.126")],
+    children: [new TextRun("Antonio, N., de Almeida, A. ve Nunes, L. (2017a). Predicting hotel booking cancellations to decrease uncertainty and increase revenue. Tourism & Management Studies, 13(2), 25-39. doi:10.18089/tms.2017.13203")],
   }),
   new Paragraph({
     alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
     indent: { hanging: 567 },
-    children: [new TextRun(
-      "Mostipak, J. (2020). Hotel booking demand [Veri seti]. Erişim tarihi: 9 Ekim 2026, " +
-      "https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand")],
+    children: [new TextRun("Antonio, N., de Almeida, A. ve Nunes, L. (2017b). Predicting hotel bookings cancellation with a machine learning classification model. 16th IEEE International Conference on Machine Learning and Applications (ICMLA) bildiriler kitabı içinde (ss. 1049-1054). Cancun: IEEE. doi:10.1109/ICMLA.2017.00-11")],
   }),
   new Paragraph({
     alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
     indent: { hanging: 567 },
-    children: [new TextRun(
-      "Hunter, J.D. (2007). Matplotlib: A 2D graphics environment. Computing in Science & " +
-      "Engineering, 9(3), 90-95. doi:10.1109/MCSE.2007.55")],
+    children: [new TextRun("Antonio, N., de Almeida, A. ve Nunes, L. (2019a). An automated machine learning based decision support system to predict hotel booking cancellations. Data Science Journal, 18(1), 32. doi:10.5334/dsj-2019-032")],
   }),
   new Paragraph({
     alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
     indent: { hanging: 567 },
-    children: [new TextRun(
-      "Waskom, M.L. (2021). Seaborn: Statistical data visualization. Journal of Open Source " +
-      "Software, 6(60), 3021. doi:10.21105/joss.03021")],
+    children: [new TextRun("Antonio, N., de Almeida, A. ve Nunes, L. (2019b). Hotel booking demand datasets. Data in Brief, 22, 41-49. doi:10.1016/j.dib.2018.11.126")],
   }),
   new Paragraph({
     alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
     indent: { hanging: 567 },
-    children: [new TextRun(
-      "McKinney, W. (2010). Data structures for statistical computing in Python. S. van der " +
-      "Walt ve J. Millman (Ed.), 9th Python in Science Conference bildiriler kitabı içinde " +
-      "(ss. 56-61). doi:10.25080/Majora-92bf1922-00a")],
+    children: [new TextRun("Hunter, J.D. (2007). Matplotlib: A 2D graphics environment. Computing in Science & Engineering, 9(3), 90-95. doi:10.1109/MCSE.2007.55")],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
+    indent: { hanging: 567 },
+    children: [new TextRun("McKinney, W. (2010). Data structures for statistical computing in Python. S. van der Walt ve J. Millman (Ed.), 9th Python in Science Conference bildiriler kitabı içinde (ss. 56-61). doi:10.25080/Majora-92bf1922-00a")],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
+    indent: { hanging: 567 },
+    children: [new TextRun("Mostipak, J. (2020). Hotel booking demand [Veri seti]. Erişim tarihi: 9 Ekim 2026, https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand")],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
+    indent: { hanging: 567 },
+    children: [new TextRun("Waskom, M.L. (2021). Seaborn: Statistical data visualization. Journal of Open Source Software, 6(60), 3021. doi:10.21105/joss.03021")],
   }),
 ];
 
