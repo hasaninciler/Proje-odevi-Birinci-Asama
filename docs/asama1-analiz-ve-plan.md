@@ -107,29 +107,158 @@ Planlanan hücre iskeleti:
 
 ---
 
-## 4. Ödev Yazım Kılavuzu Uyumu
+## 4. Ödev Yazım Kılavuzu Kuralları (kılavuzdan çıkarıldı)
 
-Hoca iki yerde de vurguluyor: *"Kılavuza uyum puanlamayı doğrudan etkileyecektir."*
+Kaynak: *İstanbul Gelişim Meslek Yüksekokulu – Bilgisayar Teknolojileri Bölümü
+Ödev Yazım Kılavuzu* (16 sayfa, `docs/kaynaklar/odev-yazim-kilavuzu.pdf`).
 
-Kılavuz adresi (PDF'te verilen):
-`https://panel.gelisim.edu.tr/assets/2023/dokumanlar/web_tasarimi_ve_kodlama/bilgisayar-teknolojileri-bolumuodev-yazim-klavuzu_ac7803a051774255af21aa91271aea17.pdf`
+### 4.1. Biçim Kuralları
 
-> **YAPILACAK:** Bu PDF indirilip bu klasöre eklenecek. Oturumun ağ politikası üniversite
-> sunucusuna erişime izin vermediği için otomatik indirilemedi. Kılavuz elimize geçtiğinde
-> sayfa düzeni / yazı tipi / punto / satır aralığı / başlık biçimi / şekil-tablo numaralandırma /
-> kaynakça stili (APA vs. IEEE) tek tek buraya maddelenecek ve raporda uygulanacak.
-> Kılavuzu görmeden kesin biçim kuralı varsayılmayacak.
+| Konu | Kural |
+|---|---|
+| Yazı tipi | **Times New Roman** |
+| Harf boyutu | **11** (sayfa numaraları dâhil) |
+| Dipnot | Times New Roman **9** |
+| Kenar boşlukları | **Sol 4 cm**, diğer üç kenar **2,5 cm** |
+| Satır aralığı | **1,5 satır** |
+| Hizalama | **İki yana yasla** |
+| Girinti (sol/sağ) | **0 cm** |
+| Paragraf aralığı (önce/sonra) | **0 nk** — paragraflar arasına fazladan boşluk konmaz |
+| Tablo/grafik/şekil açıklamaları, dipnotlar, kaynakça | Satır aralığı **1 satır** |
+| Sayfa numarası konumu | Alt kenar **ortası**, alt kenardan **1 cm** yükseklikte |
 
-Kılavuzdan teyit edilecek maddeler:
-- [ ] Kapak sayfası düzeni (üniversite/bölüm/ders/öğrenci bilgileri)
-- [ ] Yazı tipi ve punto
-- [ ] Satır aralığı ve paragraf aralığı
-- [ ] Sayfa kenar boşlukları
-- [ ] Başlık numaralandırma biçimi
-- [ ] Şekil ve tablo başlıklarının konumu (şekil altta, tablo üstte?)
-- [ ] Sayfa numarası konumu
-- [ ] Kaynakça / atıf stili
-- [ ] İçindekiler tablosu gerekli mi
+### 4.2. Sayfa Numaralandırma
+
+- **Numara verilmeyen sayfalar:** dış kapak, boş sayfa, ödev tanıtım formu, iç kapak,
+  kabul ve onay sayfası
+- **Özet'ten metin başlangıcına kadar:** büyük Romen rakamları → `I, II, III, IV`
+- **Metin kısmı:** normal rakamlar → `1, 2, 3, 4`
+- Bölüm numarası ile birlikte numaralandırma yapılmaz (`1-5`, `2-3` gibi değil)
+- Eklere kadar numaralar kesintisiz devam eder
+
+### 4.3. Başlık Biçimleri
+
+| Düzey | Biçim | Numaralandırma |
+|---|---|---|
+| Bölüm başlığı | Yeni sayfada başlar, sayfanın **üst ortasında**, tamamı **BÜYÜK ve KALIN**. Bölüm numarası **yazıyla** üst satıra, bölüm adı alt satıra | `BİRİNCİ BÖLÜM` / `BÖLÜM ADI` |
+| Ana başlık | Tamamı **BÜYÜK ve KALIN** | `1.1.`, `1.2.`, `1.3.` |
+| Alt başlık | Yalnızca **ilk harfler büyük**, **kalın** | `1.1.1.`, `1.1.2.` |
+
+- Rakamlardan sonra **nokta** konur.
+- Başlıklarda *ve, ile, ya, veya, yahut, ki, da, de* ve *mı/mi/mu/mü*: tamamı büyük
+  yazılan başlıkta büyük, ilk harfler büyük yazılan başlıkta **küçük** harfle yazılır.
+- Giriş, bölüm başlıkları ve Sonuç **yeni bir sayfada** başlar.
+
+### 4.4. Tablo, Grafik, Şekil ve Resimler  ← bizim için kritik
+
+- İlgili metnin **altında**, sayfanın **ortasında** konumlandırılır.
+- Numaralandırma **kalın** yazı tipiyle ve **kendi cinsi içinde**: `Grafik-1`, `Grafik-2`,
+  `Tablo-1`, `Şekil-1` (tireli yazım, kılavuzdaki örnek: "Tablo-2", "Grafik-4").
+- **Konum farkı:**
+  - **Tablo** ve **harita** → numara ve isim **ÜSTTE**
+  - **Grafik**, **şekil** ve **resim** → numara ve isim **ALTTA**
+- Alıntı ise kaynağı **mutlaka** belirtilir (dipnot sistemiyle).
+- Tüm yazılar **Türkçe** olmalıdır → matplotlib grafiklerindeki eksen etiketleri,
+  başlıklar ve açıklamalar Türkçe yazılacak. (Notebook'ta bu kurala uyuldu.)
+
+> **Dikkat:** Bizim 5 görselimiz "Grafik" cinsindendir → `Grafik-1` … `Grafik-5`
+> şeklinde numaralandırılacak ve isimleri grafiğin **altına** yazılacak.
+> Ayrıca raporda bir **Grafikler Listesi** sayfası gerekir.
+
+### 4.5. Sayfa Sırası (zorunlu)
+
+1. Kapak
+2. Ödev Tanıtım Formu
+3. Beyan
+4. Öğretim Görevlisinin Kabul ve Onay Sayfası
+5. Özet
+6. İçindekiler
+7. Kısaltmalar *(var ise)*
+8. Tablolar Listesi *(var ise)*
+9. Haritalar Listesi *(var ise)*
+10. **Grafikler Listesi** *(bizde var — 5 grafik)*
+11. Şekiller Listesi *(var ise)*
+12. Resimler Listesi *(var ise)*
+13. Ön Söz
+14. **Metin Kısmı**
+15. Kaynakça
+16. Ekler *(var ise)*
+
+### 4.6. Özel Sayfaların İçeriği
+
+- **Özet:** En fazla **300 kelime**. Çalışmanın amacı, diğer çalışmalardan farkı ve
+  önemli bulguları vurgulanır. Altına **Anahtar Kelimeler**: alfabetik sırayla, küçük
+  harfle (ilk kelimenin ilk harfi büyük), aralarında virgül.
+- **Ön Söz:** Teknik detaya girmeden yazarın görüşleri, karşılaşılan güçlükler ve
+  teşekkür. **Bir sayfayı geçmez.** Başlık sayfanın üst ortasında `ÖN SÖZ`, metnin
+  altına **sağa dayalı** ad soyad.
+- **Beyan:** Kılavuzdaki metin birebir kullanılır; altına tarih, ad soyad, imza.
+- **Giriş:** Literatür taraması + çalışmanın yapılma gereği ve amacı. Amaç "Ne?",
+  "Nasıl?", "Niçin?" sorularına cevap vermeli; hedefler **spesifik ve ölçülebilir** olmalı.
+
+### 4.7. Kaynakça Biçimi (APA tabanlı, Türkçe)
+
+Yazar soyadı tam, adı yalnızca ilk harf. DOI varsa en sona eklenir.
+
+```
+Kitap:
+Sarı, G. (2013). Ermeni meselesi ışığında Süryaniler. Ankara: Barış Platin Yayınevi.
+
+Makale:
+Ak, T. (2018, Mayıs). Silahlı insansız hava araçlarının kullanımında karar
+mekanizmaları. Güvenlik Bilimleri Dergisi, 7(1), 111-130. doi:10.28956/gbd.422803
+
+Elektronik kaynak:
+Shotton, M.A. (1989). Computer addiction? A study of computer dependency.
+Erişim tarihi: 18 Ağustos 2011, http://www.ebookstore.tandf.co.uk/html/index
+```
+
+Bizim kaynaklarımızın bu biçime göre yazılmış hali:
+
+```
+Antonio, N., de Almeida, A. ve Nunes, L. (2019). Hotel booking demand datasets.
+Data in Brief, 22, 41-49. doi:10.1016/j.dib.2018.11.126
+
+Mostipak, J. (2020). Hotel booking demand [Veri seti]. Erişim tarihi: 9 Ekim 2026,
+https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand
+```
+
+### 4.8. Kapak ve Tanıtım Formu Bilgileri
+
+```
+İSTANBUL GELİŞİM MESLEK YÜKSEKOKULU
+BİLGİSAYAR TEKNOLOJİLERİ BÖLÜMÜ
+ÖN YÜZ YAZILIM GELİŞTİRME PROGRAMI
+
+[ÖDEVİN ADI]
+
+FİNAL PROJE ÖDEVİ
+
+Hazırlayan
+250184009 - Hasan İNCİLER
+
+Ödev Danışmanı
+Öğr. Gör. Çisem YAŞAR
+
+İSTANBUL - 2026
+```
+
+Ödev Tanıtım Formu:
+
+| Alan | Değer |
+|---|---|
+| YAZAR ADI SOYADI | Hasan İNCİLER |
+| ÖDEVİN DİLİ | Türkçe |
+| ÖDEVİN ADI | *[proje adı]* |
+| BÖLÜM | Bilgisayar Teknolojileri |
+| PROGRAM | Ön Yüz Yazılım Geliştirme |
+| ÖDEVİN TÜRÜ | Final |
+| ÖDEVİN TES. TARİHİ | *[teslim tarihi]* |
+| SAYFA SAYISI | *[rapor bitince]* |
+| ÖDEV DANIŞMANI | Öğr. Gör. Çisem Yaşar |
+
+> **Not:** Kılavuzda `BÖLÜM` alanı sabittir ve "Bilgisayar Teknolojileri" olarak
+> basılı gelmiştir. "Ön Yüz Yazılım Geliştirme" ise **PROGRAM** alanına yazılır.
 
 ---
 
@@ -163,7 +292,9 @@ Notlar:
 - **D** görsel olarak en etkileyici, ama görsel veride null/kategorik soruları boşlukta kalır
   ve Aşama 2'de eğitim maliyeti yüksek.
 
-**Öneri: A (birinci), B (ikinci).** Gerekçe: ödev Aşama 1'de **model değil ön işleme planı**
+**KARAR: A — Otel rezervasyon iptal tahmini seçildi (9 Ekim 2026).**
+
+(Öneri sırası A birinci, B ikinci idi.) Gerekçe: ödev Aşama 1'de **model değil ön işleme planı**
 istiyor; en çok puan ön işleme ve grafik sorularından geliyor; tabüler ve eksik verisi bol bir
 veri seti bu soruları doğrudan besliyor.
 
