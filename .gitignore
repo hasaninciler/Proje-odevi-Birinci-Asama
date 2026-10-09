@@ -1,0 +1,4 @@
+# LibreOffice/nbconvert ara ciktilari
+build/*.pdf
+build/*.txt
+build/*.jpg
