@@ -163,7 +163,7 @@ const grafiklerListesi = [
   icSatir("Grafik-2. Hedef Değişkenin Sınıf Dağılımı", pg("g2")),
   icSatir("Grafik-3. Bekleme Süresinin İptal Durumuna Göre Dağılımı", pg("g3")),
   icSatir("Grafik-4. Pazar Segmentine Göre İptal Oranları", pg("g4")),
-  icSatir("Grafik-5. Sayısal Öznitelikler Arası Korelasyon Isı Haritası", pg("g5")),
+  icSatir("Grafik-5. Bekleme Süresi ve Günlük Oda Fiyatı İlişkisi", pg("g5")),
   bos(), bos(),
   ...tekBaslik("TABLOLAR LİSTESİ").slice(1),
   icSatir("Tablo-1. Veri Setinin Genel Özellikleri", pg("t1")),
@@ -409,7 +409,7 @@ const bolum2 = [
   anaBaslik("2.2.", "Eksik Verilerin Ele Alınması"),
   p("Veri setinde eksik değer (null/nan) içeren dört sütun bulunmaktadır. Bu sütunların " +
     "eksiklik oranları Grafik-1’de görselleştirilmiştir."),
-  ...grafik(1, "Sütunlara Göre Eksik Veri Oranları", "grafik1.png", 411, 178),
+  ...grafik(1, "Sütunlara Göre Eksik Veri Oranları", "grafik1.png", 411, 197),
   p("Grafik-1 incelendiğinde, eksikliğin dört sütunda yoğunlaştığı ve bu sütunların birbirinden " +
     "çok farklı eksiklik düzeylerine sahip olduğu görülmektedir. company sütununun %94,31’i, " +
     "agent sütununun %13,69’u eksiktir. country (%0,41) ve children (%0,003) sütunlarındaki " +
@@ -494,15 +494,18 @@ const bolum2 = [
 
   anaBaslik("2.5.", "Veri Setinin Görselleştirilmesi"),
   p("Veri setinin yapısı ve sınıf dağılımları, Google Colab ortamında Matplotlib (Hunter, " +
-    "2007) ve Seaborn (Waskom, 2021) kütüphaneleri kullanılarak beş farklı grafikle incelenmiştir. Eksik veri dağılımını " +
+    "2007) kütüphanesi kullanılarak beş grafikle incelenmiştir. Grafik türleri hedeflenen " +
+    "soruya göre seçilmiştir: kategorileri karşılaştırmak için çubuk, bir sayısal değişkenin " +
+    "dağılımını görmek için histogram, iki sayısal değişken arasındaki ilişkiyi incelemek için " +
+    "saçılım grafiği kullanılmıştır. Eksik veri dağılımını " +
     "gösteren Grafik-1 bölüm 2.2’de sunulmuştur. Bu bölümde kalan dört grafik ele " +
     "alınmaktadır."),
 
   altBaslik("2.5.1.", "Hedef Değişkenin Sınıf Dağılımı"),
   p("Modelin tahmin etmeye çalışacağı hedef değişkenin sınıfları arasındaki dengenin " +
     "incelenmesi, model seçimi ve değerlendirme ölçütünün belirlenmesi açısından " +
-    "belirleyicidir. Sınıf dağılımı Grafik-2’de hem adet hem oran olarak verilmiştir."),
-  ...grafik(2, "Hedef Değişkenin Sınıf Dağılımı", "grafik2.png", 411, 153),
+    "belirleyicidir. Sınıf dağılımı Grafik-2’de verilmiştir."),
+  ...grafik(2, "Hedef Değişkenin Sınıf Dağılımı", "grafik2.png", 411, 253),
   p("Grafik-2’ye göre rezervasyonların 75.166’sı (%62,96) iptal edilmemiş, 44.224’ü (%37,04) " +
     "iptal edilmiştir. Sınıflar arasındaki oran yaklaşık 1,70’e 1’dir. Bu, ılımlı düzeyde " +
     "dengesiz (imbalanced) bir veri setidir."),
@@ -519,7 +522,7 @@ const bolum2 = [
   p("Rezervasyonun yapıldığı tarih ile otele giriş tarihi arasındaki gün sayısını ifade eden " +
     "lead_time özniteliğinin dağılımı, iptal durumuna göre ayrılarak Grafik-3’te " +
     "incelenmiştir."),
-  ...grafik(3, "Bekleme Süresinin İptal Durumuna Göre Dağılımı", "grafik3.png", 411, 202),
+  ...grafik(3, "Bekleme Süresinin İptal Durumuna Göre Dağılımı", "grafik3.png", 411, 214),
   p("Grafik-3’te her iki sınıfın dağılımının da sağa çarpık (right-skewed) olduğu, " +
     "rezervasyonların büyük bölümünün girişten kısa süre önce yapıldığı görülmektedir. " +
     "Bununla birlikte iki sınıf arasında belirgin bir fark bulunmaktadır: iptal edilmeyen " +
@@ -537,10 +540,15 @@ const bolum2 = [
   p("Kategorik bir özniteliğin hedef değişkenle ilişkisini incelemek, hangi kategorik " +
     "özniteliklerin modele katkı sağlayacağını belirlemek açısından önemlidir. Pazar " +
     "segmentine göre iptal oranları Grafik-4’te verilmiştir."),
-  ...grafik(4, "Pazar Segmentine Göre İptal Oranları", "grafik4.png", 411, 191),
-  p("Grafik-4, iptal oranının pazar segmentine göre güçlü biçimde değiştiğini " +
-    "göstermektedir. Grup rezervasyonlarında (Groups) iptal oranı %61,1’e kadar " +
-    "çıkmaktadır; grup rezervasyonlarının genellikle tur operatörleri tarafından ön tedbir " +
+  ...grafik(4, "Pazar Segmentine Göre İptal Oranları", "grafik4.png", 411, 205),
+  p("Grafiğin en üstündeki Undefined segmenti %100 iptal oranıyla göze çarpmaktadır; ancak bu " +
+    "segmentte yalnızca iki rezervasyon bulunmaktadır. Bu kadar az örnekten güvenilir bir sonuç " +
+    "çıkarılamayacağı için söz konusu segment değerlendirmeye alınmamıştır. Bu durum aynı " +
+    "zamanda bir uyarı niteliğindedir: oran grafiklerinde yüzdeye bakmadan önce ilgili " +
+    "kategoride kaç örnek bulunduğu incelenmelidir."),
+  p("Anlamlı büyüklükteki segmentler incelendiğinde Grafik-4, iptal oranının pazar segmentine " +
+    "göre güçlü biçimde değiştiğini göstermektedir. Grup rezervasyonlarında (Groups) iptal " +
+    "oranı %61,1’dir; grup rezervasyonlarının genellikle tur operatörleri tarafından ön tedbir " +
     "amaçlı yapıldığı ve sonradan kolayca iptal edilebildiği düşünüldüğünde bu beklenen bir " +
     "sonuçtur. Çevrimiçi seyahat acentesi segmenti (Online TA) %36,7 ile genel ortalamaya " +
     "yakın olmakla birlikte, 56.477 rezervasyonla veri setindeki en büyük segment olduğu " +
@@ -551,26 +559,31 @@ const bolum2 = [
     "sistematik biçimde ilişkili olduğunu göstermektedir. Bu bulgu, çalışmanın temel " +
     "varsayımı olan iptal davranışının öngörülebilirliğini desteklemektedir."),
 
-  altBaslik("2.5.4.", "Sayısal Öznitelikler Arası Korelasyon"),
-  p("Öznitelikler arasındaki doğrusal ilişkiler ve her birinin hedef değişkenle korelasyonu " +
-    "Grafik-5’teki ısı haritasıyla incelenmiştir."),
-  ...grafik(5, "Sayısal Öznitelikler Arası Korelasyon Isı Haritası", "grafik5.png", 411, 350),
-  p("Grafik-5’ten üç sonuç çıkarılmaktadır. Birincisi, hedef değişkenle en güçlü ilişkiye " +
-    "sahip öznitelik lead_time’dır (+0,29); bu, Grafik-3’teki bulgunun sayısal doğrulamasıdır. " +
-    "Özel talep sayısı (-0,23) ve ayrılan otopark yeri sayısı (-0,20) ise negatif yönde " +
-    "ilişkilidir. Bu sonuç anlamlıdır: özel talepte bulunan veya otopark yeri ayırtan bir " +
-    "müşteri, konaklamasını somutlaştırmış, dolayısıyla kararlılığı yüksek bir müşteridir."),
-  p("İkincisi, öznitelikler arası çoklu doğrusal bağlantı (multicollinearity) düşüktür. " +
-    "Tekrar gelen müşteri bilgisi ile daha önce iptal edilmemiş rezervasyon sayısı " +
-    "arasındaki +0,42 değeri dışında öznitelikler arasında güçlü bir korelasyon " +
-    "görülmemektedir. Bu, özniteliklerin büyük ölçüde bağımsız bilgi taşıdığı ve olduğu " +
-    "gibi kullanılabileceği anlamına gelir."),
-  p("Üçüncüsü ve model seçimi açısından en önemlisi, hiçbir tek özniteliğin hedef değişkenle " +
-    "0,30’un üzerinde korelasyona sahip olmamasıdır. Bu durum, iptal davranışının tek bir " +
-    "değişkenle açıklanamayacağını, öznitelikler arasındaki etkileşimlerden kaynaklandığını " +
-    "göstermektedir. Dolayısıyla ikinci aşamada yalnızca Lojistik Regresyon gibi doğrusal " +
-    "bir modelle yetinilmemeli; ağaç tabanlı ve doğrusal olmayan modeller de denenmelidir. " +
-    "Korelasyon matrisi, bu model seçimi kararının gerekçesini oluşturmaktadır."),
+  altBaslik("2.5.4.", "Bekleme Süresi ve Günlük Oda Fiyatı İlişkisi"),
+  p("Son olarak iki sayısal değişken arasındaki ilişki saçılım grafiğiyle incelenmiştir: " +
+    "bekleme süresi (lead_time) ve günlük ortalama oda fiyatı (adr). Grafikte her rezervasyon " +
+    "bir nokta olarak gösterilmekte, iptal edilen ve edilmeyen rezervasyonlar farklı renklerle " +
+    "ayrılmaktadır. Veri setindeki 119.390 noktanın tamamının çizilmesi grafiği okunamaz hale " +
+    "getirdiğinden, rastgele seçilmiş 1.000 rezervasyonluk bir örneklem kullanılmıştır."),
+  ...grafik(5, "Bekleme Süresi ve Günlük Oda Fiyatı İlişkisi", "grafik5.png", 411, 261),
+  p("Grafik-5 incelendiğinde iki sınıfın noktalarının büyük ölçüde iç içe geçtiği " +
+    "görülmektedir. Grafiğin sağ tarafında, yani bekleme süresinin uzun olduğu bölgede, iptal " +
+    "edilen rezervasyonların yoğunluğu artmaktadır; bu, Grafik-3’teki bulgunun farklı bir " +
+    "gösterimle doğrulanmasıdır. Buna karşılık günlük oda fiyatı ekseninde iki sınıf arasında " +
+    "belirgin bir ayrışma gözlenmemektedir."),
+  p("Grafiğin en önemli çıkarımı şudur: bu iki öznitelik üzerine çizilebilecek tek bir düz çizgi " +
+    "iki sınıfı birbirinden ayıramamaktadır. Sınıfları ayıran sınır doğrusal değildir."),
+  p("Bu gözlem sayısal olarak da doğrulanmıştır. Sayısal özniteliklerin hedef değişkenle " +
+    "korelasyonları hesaplandığında en güçlü ilişkiye sahip öznitelik lead_time’dır (+0,29). " +
+    "Onu özel talep sayısı (-0,23) ve ayrılan otopark yeri sayısı (-0,20) izlemektedir. Negatif " +
+    "yöndeki bu ilişkiler anlamlıdır: özel talepte bulunan veya otopark yeri ayırtan bir müşteri, " +
+    "konaklamasını zihninde somutlaştırmış, dolayısıyla kararlılığı yüksek bir müşteridir."),
+  p("Hiçbir tek özniteliğin hedef değişkenle 0,30’un üzerinde korelasyona sahip olmaması, iptal " +
+    "davranışının tek bir değişkenle açıklanamayacağını, öznitelikler arasındaki etkileşimlerden " +
+    "kaynaklandığını göstermektedir. Dolayısıyla ikinci aşamada yalnızca Lojistik Regresyon gibi " +
+    "doğrusal bir modelle yetinilmemeli; Rastgele Orman ve XGBoost gibi ağaç tabanlı, doğrusal " +
+    "olmayan modeller de denenmelidir. Grafik-5 ve ona eşlik eden korelasyon değerleri, bu model " +
+    "seçimi kararının gerekçesini oluşturmaktadır."),
 ];
 
 // ---------------------- ÜÇÜNCÜ BÖLÜM ----------------------
@@ -724,11 +737,6 @@ const kaynakca = [
     alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
     indent: { hanging: 567 },
     children: [new TextRun("Mostipak, J. (2020). Hotel booking demand [Veri seti]. Erişim tarihi: 9 Ekim 2026, https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand")],
-  }),
-  new Paragraph({
-    alignment: AlignmentType.JUSTIFIED, spacing: { ...SP1, after: 180 },
-    indent: { hanging: 567 },
-    children: [new TextRun("Waskom, M.L. (2021). Seaborn: Statistical data visualization. Journal of Open Source Software, 6(60), 3021. doi:10.21105/joss.03021")],
   }),
 ];
 
