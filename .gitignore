@@ -1,4 +1,11 @@
-# LibreOffice/nbconvert ara ciktilari
+# LibreOffice / nbconvert ara ciktilari
 build/*.pdf
 build/*.txt
 build/*.jpg
+build/*.png
+
+# Islenmis imza gorseli ve imzali teslim paketi depoya konmaz.
+# Imza kisisel bir veridir; depo ileride herkese acik olursa baskalari
+# tarafindan kopyalanabilir. Dosyalar yerelde duruyor.
+docs/imza/
+teslim/

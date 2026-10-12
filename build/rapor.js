@@ -125,6 +125,8 @@ const icSatir = (etiket, sayfa, { girinti = 0, bold = false } = {}) => new Parag
 // Ödev Tanıtım Formu / veri tablosu satırı
 const formSatir = (etiket, deger) => new Paragraph({
   spacing: SP,
+  // asili girinti: deger alt satira tastiginda da ayni sutunda hizali kalir
+  indent: { left: 4000, hanging: 4000 },
   tabStops: [{ type: TabStopType.LEFT, position: 4000 }],
   children: [
     new TextRun({ text: etiket }),

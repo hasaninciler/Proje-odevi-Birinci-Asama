@@ -1,6 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const H = require("./rapor.js");
+const { ImageRun } = require("docx");
+
+// Öğrencinin imza görseli (şeffaf arka planlı PNG)
+const IMZA = path.join(__dirname, "..", "docs", "imza", "imza.png");
 const {
   Document, Packer, Paragraph, TextRun, Footer, AlignmentType, PageNumber,
   NumberFormat, PageBreak, CM, CONTENT_W, SP, SP1,
@@ -48,7 +52,7 @@ const tanitimFormu = [
   formSatir("BÖLÜM", "Bilgisayar Teknolojileri"),
   formSatir("PROGRAM", "Ön Yüz Yazılım Geliştirme"),
   formSatir("ÖDEVİN TÜRÜ", "Final"),
-  formSatir("ÖDEVİN TES. TARİHİ", "…… / …… / 2026"),
+  formSatir("ÖDEVİN TES. TARİHİ", "13 / 10 / 2026"),
   formSatir("SAYFA SAYISI", pg("toplam")),
   formSatir("ÖDEV DANIŞMANI", DANISMAN),
 ];
@@ -64,9 +68,16 @@ const beyan = [
     "eder, aksi durumda karşılaşacağım cezai ve/ve ya hukuki durumu kabul eder; ayrıca " +
     "üniversitenin ilgili yasa, yönerge ve metinlerini okuduğumu beyan ederim."),
   bos(), bos(), bos(),
-  new Paragraph({ alignment: AlignmentType.RIGHT, spacing: SP, children: [new TextRun("Tarih")] }),
+  new Paragraph({ alignment: AlignmentType.RIGHT, spacing: SP, children: [new TextRun("13/10/2026")] }),
   new Paragraph({ alignment: AlignmentType.RIGHT, spacing: SP, children: [new TextRun("Hasan İNCİLER")] }),
-  new Paragraph({ alignment: AlignmentType.RIGHT, spacing: SP, children: [new TextRun("İmza")] }),
+  new Paragraph({
+    alignment: AlignmentType.RIGHT, spacing: SP1,
+    children: [new ImageRun({
+      type: "png",
+      data: fs.readFileSync(IMZA),
+      transformation: { width: 135, height: 60 },   // 386x172 px oranı korunuyor
+    })],
+  }),
 ];
 
 const kabulOnay = [
