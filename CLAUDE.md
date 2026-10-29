@@ -17,7 +17,7 @@ ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 |---|---|---|
 | 1 — Yapay Zeka Uygulamaları (OYG201) | `asama1/`, `build/` | Öğr. Gör. Çisem Yaşar |
 | 2 — Bulanık Mantık (BLP274) | `bulanik-mantik/` | Öğr. Gör. İpek Ebru KARAÇAY |
-| 3 — MATLAB | `matlab/` | ? (farklı hoca, henüz öğrenilmedi) |
+| 3 — MATLAB Programlama (BLP272) | `matlab/` | Öğr. Gör. Kübra ÇETİNBERK |
 
 ---
 
@@ -131,16 +131,33 @@ Veri seti burada iki işe yarar: (1) üyelik fonksiyonu sınırlarını belirlem
 
 ---
 
-## DERS 3 — MATLAB
+## DERS 3 — MATLAB Programlama
 
-**Ödev türü:** Aşamalı final projesi (ayrıntılar ödev metni gelince yazılacak)
-**Durum:** Aşama 1 ödev metni bekleniyor.
-**Not:** Kod MATLAB dilinde yazılacak (Python değil). Veri seti aynı CSV,
-MATLAB'de `readtable` ile okunur.
+**Ders kodu:** BLP272 — **Hoca:** Öğr. Gör. Kübra ÇETİNBERK
+**Değerlendirme:** %100 uygulama. 4 aşama: Plan %10, Yapı %40, Geliştirme %40, **Sunum %10**
+(öğrenci uygulamayı kendisi sunacak → her parçayı anlatabilmeli).
+**Not:** Kod MATLAB dilinde (Python değil). Bu ortamda MATLAB/Octave yok; MATLAB'da
+çalıştırma ve `readtable` kontrolünü öğrenci kendisi yapar.
+
+### Aşama 1 — Plan (%10) — planlanıyor
+
+Sorular: `matlab/kaynaklar/BLP272_plan_asamasi.pdf` (8 madde: 1 ad, 2 öğrenci, 3 amaç,
+4 problem + mevcut çözümler/dezavantajlar, 5 piyasadan farkı, 6 avantaj/özgün yanlar,
+7 veri nasıl elde edilecek + hangi yol ve gerekçesi, 8 kullanıcı işlemleri, arayüz bileşenleri, çıktılar).
+
+Teslim (tek ZIP, `250184009_Hasan_Inciler_ProjeAsama1`): `_Rapor.pdf`, `_VeriSetiTanitim.pdf`, `_VeriSeti.csv`.
+Tanıtım dokümanında Bulanık Mantık'takinden **fazladan** istenenler: MATLAB'a aktarma biçimi
+(readtable, sütun ayracı, ondalık ayracı, UTF-8) ve kalite sorunları (eksik hücre,
+aralık dışı kayıt, **yinelenen satır**: veri setinde 31.994 tam kopya satır var).
+Veri en az 2 sayısal + 1 kategorik + mümkünse 1 tarih sütunu içermeli.
+Konu sonradan değiştirilemez.
+
+**Öğrencinin isteği:** "çok abartmıyacağız" — kapsam mütevazı, öğrenci seviyesinde.
+Yapay Zeka dersinde hoca ödevin Claude ile yapıldığını anladı (öğrenci söyledi, 29/10/2026 sonrası).
 
 ### Klasör
 
-- `matlab/` — henüz oluşturulmadı.
+- `matlab/` — diğer derslerle karıştırılmayacak.
 
 ---
 
