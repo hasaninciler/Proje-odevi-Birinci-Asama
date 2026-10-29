@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const {
   Document, Packer, Paragraph, TextRun, Footer, AlignmentType, PageNumber,
-  NumberFormat, CM, SP, SP1, sayfalar, kir, kod,
+  NumberFormat, CM, SP, SP1, sayfalar, kir,
   p, bos, ortali, tekBaslik, anaBaslik, altBaslik, madde,
   icSatir, tablo, tabloBasligi,
 } = require("./yardimci.js");
@@ -49,8 +49,6 @@ const icindekiler = [
   icSatir("4.2. Kategorik Değişkenler", pg("b4_2"), { girinti: G }),
   icSatir("4.3. Tarih Değişkenleri", pg("b4_3"), { girinti: G }),
   icSatir("5. VERİNİN MATLAB’A AKTARILMASI", pg("b5"), { bold: true }),
-  icSatir("5.1. Dosya Ayarları", pg("b5_1"), { girinti: G }),
-  icSatir("5.2. Aktarma Kodu", pg("b5_2"), { girinti: G }),
   icSatir("6. KALİTE SORUNLARI", pg("b6"), { bold: true }),
   icSatir("6.1. Eksik Hücreler", pg("b6_1"), { girinti: G }),
   icSatir("6.2. Aralık Dışı ve Şüpheli Kayıtlar", pg("b6_2"), { girinti: G }),
@@ -66,9 +64,8 @@ const tablolarListesi = [
   icSatir("Tablo-4. Sayısal Değişkenler", pg("t4")),
   icSatir("Tablo-5. Kategorik Değişkenler", pg("t5")),
   icSatir("Tablo-6. Tarih Değişkenleri", pg("t6")),
-  icSatir("Tablo-7. MATLAB’a Aktarma İçin Dosya Ayarları", pg("t7")),
-  icSatir("Tablo-8. Eksik Hücre İçeren Sütunlar", pg("t8")),
-  icSatir("Tablo-9. Aralık Dışı ve Şüpheli Kayıtlar", pg("t9")),
+  icSatir("Tablo-7. Eksik Hücre İçeren Sütunlar", pg("t7")),
+  icSatir("Tablo-8. Aralık Dışı ve Şüpheli Kayıtlar", pg("t8")),
 ];
 
 const W4 = [2200, 2650, 1400, 1971];
@@ -202,60 +199,17 @@ const b4 = [
 
 const b5 = [
   anaBaslik("5.", "Verinin MATLAB’a Aktarılması"),
-  altBaslik("5.1.", "Dosya Ayarları"),
-  p("Veri, ilk satırında sütun adları bulunan düz bir CSV dosyasıdır ve MATLAB’a readtable " +
-    "komutuyla aktarılacaktır. Okuma sırasında kullanılacak ayarlar Tablo-7’de verilmiştir."),
-  tabloBasligi(7, "MATLAB’a Aktarma İçin Dosya Ayarları"),
-  tablo(["Ayar", "Değer"], [
-    ["Okuma komutu", "detectImportOptions ve readtable"],
-    ["Sütun ayracı", "Virgül ( , )"],
-    ["Ondalık ayracı", "Nokta ( . ); örneğin 75.5"],
-    ["Karakter kodlaması", "UTF-8 (dosya yalnızca İngilizce karakterler içerdiği için kodlama sorunu çıkmaz)"],
-    ["Başlık satırı", "1. satır (sütun adları)"],
-    ["Eksik değer gösterimi", "“NULL” (country, agent, company) ve “NA” (children)"],
-  ], [2600, 5621], { birArada: true }),
-
-  altBaslik("5.2.", "Aktarma Kodu"),
-  new Paragraph({ alignment: AlignmentType.JUSTIFIED, spacing: SP, keepNext: true,
-    children: [new TextRun("Veriyi aktarmak için planlanan MATLAB kodu aşağıdadır:")] }),
-  ...kod([
-    'dosya = "250184009_Hasan_Inciler_VeriSeti.csv";',
-    'opts = detectImportOptions(dosya, "Delimiter", ",", ...',
-    '                           "Encoding", "UTF-8");',
-    '',
-    '% Sayı içeren ama "NULL"/"NA" yazan sütunlar',
-    'opts = setvartype(opts, ["children","agent","company"], "double");',
-    'opts = setvaropts(opts, ["children","agent","company"], ...',
-    '                  "TreatAsMissing", ["NULL","NA"]);',
-    '',
-    '% Tarih sütunu',
-    'opts = setvartype(opts, "reservation_status_date", "datetime");',
-    'opts = setvaropts(opts, "reservation_status_date", ...',
-    '                  "InputFormat", "yyyy-MM-dd");',
-    '',
-    'veri = readtable(dosya, opts);',
-    '',
-    '% "NULL" yazan ülkeleri eksik yap, metin sütunlarını kategoriye çevir',
-    'veri.country = string(veri.country);',
-    'veri.country(veri.country == "NULL") = missing;',
-    'metinler = ["hotel","arrival_date_month","meal","country", ...',
-    '    "market_segment","distribution_channel","reserved_room_type", ...',
-    '    "assigned_room_type","deposit_type","customer_type", ...',
-    '    "reservation_status"];',
-    'veri = convertvars(veri, metinler, "categorical");',
-    '',
-    '% Yıl, ay ve gün sütunlarından giriş tarihi oluştur',
-    'aylar = ["January","February","March","April","May","June", ...',
-    '    "July","August","September","October","November","December"];',
-    '[~, ay] = ismember(string(veri.arrival_date_month), aylar);',
-    'veri.varis_tarihi = datetime(veri.arrival_date_year, ay, ...',
-    '                             veri.arrival_date_day_of_month);',
-    '',
-    'size(veri)   % beklenen: 119390 satır, 33 sütun (32 + varis_tarihi)',
-  ]),
-  p("Kod çalıştırıldığında tablonun 119.390 satırdan ve oluşturulan giriş tarihiyle birlikte 33 " +
-    "sütundan oluşması beklenir. Sütunların doğru ayrıldığı, size, head ve summary komutlarıyla " +
-    "kontrol edilecektir."),
+  p("Veri, ilk satırında sütun adları bulunan bir CSV dosyasıdır ve MATLAB’a readtable komutuyla " +
+    "aktarılacaktır. Dosyada sütunlar virgül (,) ile, ondalıklı sayılar ise nokta (.) ile " +
+    "ayrılmıştır; örneğin bir oda fiyatı 75.5 şeklinde yazılmıştır. Dosya yalnızca İngilizce " +
+    "karakterler içerdiği için UTF-8 kodlamasıyla sorunsuz okunur."),
+  p("Dosyada eksik değerler boş bırakılmamış; country, agent ve company sütunlarında “NULL”, " +
+    "children sütununda ise “NA” olarak yazılmıştır. Okuma sırasında bu değerler eksik değer " +
+    "olarak tanımlanacaktır. Ayrıca metin sütunları categorical, reservation_status_date sütunu " +
+    "ise datetime tipine çevrilecek; yıl, ay ve gün sütunlarından da varis_tarihi adlı bir giriş " +
+    "tarihi sütunu oluşturulacaktır."),
+  p("Aktarma sonrasında tablonun 119.390 satırdan oluştuğu ve sütunların doğru ayrıldığı size, " +
+    "head ve summary komutlarıyla kontrol edilecektir."),
 ];
 
 const b6 = [
@@ -264,7 +218,7 @@ const b6 = [
     "temizleme adımını göstermek amacıyla veriye ayrıca hatalı kayıt eklenmesine gerek yoktur."),
   altBaslik("6.1.", "Eksik Hücreler"),
   p("Dört sütunda toplam 129.425 eksik hücre bulunmaktadır. Diğer 28 sütunda eksik hücre yoktur."),
-  tabloBasligi(8, "Eksik Hücre İçeren Sütunlar"),
+  tabloBasligi(7, "Eksik Hücre İçeren Sütunlar"),
   tablo(["Sütun", "Eksik Hücre", "Oranı", "Planlanan İşlem"], [
     ["company", "112.593", "%94,31", "Sütun analizde kullanılmayacak"],
     ["agent", "16.340", "%13,69", "“Acente yok” anlamına geldiği için 0 ile doldurulacak"],
@@ -273,8 +227,8 @@ const b6 = [
   ], [1600, 1500, 1200, 3921], { birArada: true }),
 
   altBaslik("6.2.", "Aralık Dışı ve Şüpheli Kayıtlar"),
-  p("Bazı kayıtlarda gerçekte olması beklenmeyen değerler bulunmaktadır. Bu kayıtlar Tablo-9’da verilmiştir."),
-  tabloBasligi(9, "Aralık Dışı ve Şüpheli Kayıtlar"),
+  p("Bazı kayıtlarda gerçekte olması beklenmeyen değerler bulunmaktadır. Bu kayıtlar Tablo-8’de verilmiştir."),
+  tabloBasligi(8, "Aralık Dışı ve Şüpheli Kayıtlar"),
   tablo(["Durum", "Sütun", "Kayıt Sayısı"], [
     ["Negatif oda fiyatı (-6,38)", "adr", "1"],
     ["Diğerlerinden çok yüksek oda fiyatı (5.400; ikinci en yüksek değer 510)", "adr", "1"],
@@ -300,7 +254,7 @@ const b6 = [
   altBaslik("6.4.", "Tanımsız ve Tutarsız Kategoriler"),
   madde("meal sütununda 1.169 kayıt “Undefined” olarak girilmiştir. Bu değer “SC” ile aynı anlama geldiği için ikisi tek kategoride birleştirilecektir."),
   madde("market_segment sütununda 2, distribution_channel sütununda 5 kayıt “Undefined” (tanımsız) değerini almaktadır."),
-  madde("Ay adları İngilizce ve metin olarak yazılmıştır; bu nedenle tarih işlemleri için 5.2’deki kodla sayıya çevrilecektir."),
+  madde("Ay adları İngilizce ve metin olarak yazılmıştır; bu nedenle tarih işlemleri için MATLAB’da ay numarasına çevrilecektir."),
 ];
 
 const SAYFA = { margin: { top: 2.5*CM, right: 2.5*CM, bottom: 2.5*CM, left: 4*CM, footer: 1*CM } };

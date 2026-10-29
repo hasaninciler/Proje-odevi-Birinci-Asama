@@ -1,4 +1,4 @@
-% Veri Seti Tanıtım Dokümanı 5.2'deki aktarma kodu.
+% readtable kontrolü için aktarma kodu (teslim ZIP'ine girmez).
 % CSV dosyası bu dosyayla aynı klasörde olmalı.
 
 dosya = "250184009_Hasan_Inciler_VeriSeti.csv";

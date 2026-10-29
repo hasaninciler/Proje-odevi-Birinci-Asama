@@ -51,7 +51,7 @@ const tanitimFormu = [
   formSatir("ÖDEVİN ADI", PROJE_ADI),
   formSatir("BÖLÜM", "Bilgisayar Teknolojileri"),
   formSatir("PROGRAM", "Ön Yüz Yazılım Geliştirme"),
-  formSatir("ÖDEVİN TÜRÜ", "Dönem Projesi"),
+  formSatir("ÖDEVİN TÜRÜ", "Vize"),
   formSatir("ÖDEVİN TES. TARİHİ", TARIH.replace(/\//g, " / ")),
   formSatir("SAYFA SAYISI", pg("toplam")),
   formSatir("ÖDEV DANIŞMANI", DANISMAN),
@@ -79,7 +79,7 @@ const kabulOnay = [
     children: [new TextRun({ text: "KABUL VE ONAY SAYFASI", bold: true })] }),
   bos(), bos(),
   p(`250184009 numaralı Hasan İNCİLER’in “${PROJE_ADI}” adlı çalışması, benim tarafımdan ` +
-    "Dönem Projesi olarak kabul edilmiştir."),
+    "Vize ödevi olarak kabul edilmiştir."),
   bos(), bos(), bos(),
   sag("Öğretim Görevlisi"),
   sag(DANISMAN),

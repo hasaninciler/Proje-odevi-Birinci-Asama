@@ -161,9 +161,11 @@ Yapay Zeka dersinde hoca ödevin Claude ile yapıldığını anladı (öğrenci 
 
 Aşama 1 dosyaları:
 - `matlab/build/plan_raporu.js` — Plan Raporu (17 sayfa, 8 sorunun hepsi, Tablo-1..5, grafik yok)
-- `matlab/build/veri_tanitim.js` — Veri Seti Tanıtım (11 sayfa; değişkenler türe göre: 20 sayısal,
-  11 kategorik, 1 tarih + oluşturulacak varis_tarihi; MATLAB aktarma ayarları ve kodu; kalite sorunları)
-- `matlab/veri_aktar.m` — tanıtım dokümanındaki aktarma kodu. **Bu ortamda test edilmedi**;
+- `matlab/build/veri_tanitim.js` — Veri Seti Tanıtım (10 sayfa; değişkenler türe göre: 20 sayısal,
+  11 kategorik, 1 tarih + oluşturulacak varis_tarihi; MATLAB'a aktarma **düz yazıyla** anlatılır;
+  kalite sorunları). **Öğrenci isteği: tanıtım dokümanına kod yazılmaz** (hoca istemedi).
+- Ödev Tanıtım Formu'nda ÖDEVİN TÜRÜ: **Vize** (öğrenci düzeltti); kabul-onay sayfası da "Vize ödevi".
+- `matlab/veri_aktar.m` — öğrencinin readtable kontrolü için aktarma kodu (ZIP'e girmez). **Bu ortamda test edilmedi**;
   öğrenci MATLAB'da çalıştırıp 119390×33 sonucunu doğrulamalı.
 - Arayüz kararı (MATLAB uygulaması mı web sitesi mi) raporda Yapı aşamasına bırakıldı;
   öğrenci "2. aşamada düşünürüz" dedi.

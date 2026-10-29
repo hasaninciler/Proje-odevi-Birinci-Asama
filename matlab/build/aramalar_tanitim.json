@@ -2,7 +2,7 @@
  "tablolar": ["Tablo-1. Veri Kaynağının Bilgileri", "bastan"], "giris": "GİRİŞ Bu doküman",
  "b1": "1. VERİ KAYNAĞININ ADI", "b2": "2. SEÇME GEREKÇESİ", "b3": "3. VERİNİN GENEL YAPISI",
  "b4": "4. DEĞİŞKENLER", "b4_1": "4.1. Sayısal Değişkenler", "b4_2": "4.2. Kategorik Değişkenler", "b4_3": "4.3. Tarih Değişkenleri",
- "b5": "5. VERİNİN MATLAB", "b5_1": "5.1. Dosya Ayarları", "b5_2": "5.2. Aktarma Kodu",
+ "b5": "5. VERİNİN MATLAB",
  "b6": "6. KALİTE SORUNLARI", "b6_1": "6.1. Eksik Hücreler", "b6_2": "6.2. Aralık Dışı", "b6_3": "6.3. Yinelenen Satırlar", "b6_4": "6.4. Tanımsız",
  "t1": "Tablo-1. Veri Kaynağının", "t2": "Tablo-2. Dersin Veri", "t3": "Tablo-3. Verinin Genel", "t4": "Tablo-4. Sayısal",
- "t5": "Tablo-5. Kategorik", "t6": "Tablo-6. Tarih", "t7": "Tablo-7. MATLAB", "t8": "Tablo-8. Eksik", "t9": "Tablo-9. Aralık"}
+ "t5": "Tablo-5. Kategorik", "t6": "Tablo-6. Tarih", "t7": "Tablo-7. Eksik", "t8": "Tablo-8. Aralık"}
