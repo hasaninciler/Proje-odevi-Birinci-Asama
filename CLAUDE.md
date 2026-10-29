@@ -153,6 +153,10 @@ Veri en az 2 sayısal + 1 kategorik + mümkünse 1 tarih sütunu içermeli.
 Konu sonradan değiştirilemez.
 
 **Öğrencinin isteği:** "çok abartmıyacağız" — kapsam mütevazı, öğrenci seviyesinde.
+**Hoca web sitesine de izin verdi.** Önerilen yapı: MATLAB veriyi okur/temizler/filtreler/gruplar,
+sonuçları `jsonencode` ile JSON + PNG olarak dışa aktarır; tek sayfalık basit bir web sitesi
+(HTML/CSS/JS) bu JSON'u gösterir. Ana iş MATLAB'da kalmalı (ders MATLAB). Kesinleşmedi —
+öğrencinin onayı ve hocaya "web sitesi MATLAB çıktısını gösterebilir mi" teyidi bekleniyor.
 Yapay Zeka dersinde hoca ödevin Claude ile yapıldığını anladı (öğrenci söyledi, 29/10/2026 sonrası).
 
 ### Klasör
