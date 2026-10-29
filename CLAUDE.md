@@ -1,7 +1,8 @@
 # Proje Hafızası — Hasan İNCİLER
 
-Bu depoda **iki ayrı dersin ödevi** yürüyor. İkisi aynı veri setini kullanıyor
-ama **ayrı ödevlerdir, birbirine karıştırılmamalıdır.**
+Bu depoda **üç ayrı dersin final projesi** yürüyor. Üçü de aynı Kaggle veri setini
+(Hotel Booking Demand) kullanıyor ama **birbirinden bağımsız projelerdir**: ayrı hoca,
+ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 
 ## Öğrenci
 
@@ -11,7 +12,12 @@ ama **ayrı ödevlerdir, birbirine karıştırılmamalıdır.**
 | Öğrenci No | 250184009 |
 | Bölüm / Program | Bilgisayar Teknolojileri / Ön Yüz Yazılım Geliştirme |
 | Okul | İstanbul Gelişim Üniversitesi, İstanbul Gelişim Meslek Yüksekokulu |
-| Ödev Danışmanı | Öğr. Gör. Çisem Yaşar |
+
+| Ders | Klasör | Ödev Danışmanı |
+|---|---|---|
+| 1 — Yapay Zeka Uygulamaları (OYG201) | `asama1/`, `build/` | Öğr. Gör. Çisem Yaşar |
+| 2 — Bulanık Mantık | `bulanik-mantik/` | ? (farklı hoca, henüz öğrenilmedi) |
+| 3 — MATLAB | `matlab/` | ? (farklı hoca, henüz öğrenilmedi) |
 
 ---
 
@@ -54,9 +60,10 @@ ama **ayrı ödevlerdir, birbirine karıştırılmamalıdır.**
 
 ## DERS 2 — Bulanık Mantık
 
-**Ödev türü:** Tek ödev (aşamalı değil)
+**Ödev türü:** Aşamalı final projesi (aşama sayısı/ağırlıkları ödev metni gelince yazılacak)
 **Hocanın sınırı:** **En fazla 27 kural.** Fazlası öğrenci için zor olacağından sınırlandı.
-**Durum:** Tasarım kararlaştırıldı, **henüz kodlanmadı/yazılmadı.**
+**Durum:** Aşama 1 ödev metni bekleniyor. Aşağıdaki tasarım bir ön fikirdir;
+ödev metni neyi isterse ona göre güncellenecek.
 
 ### Kararlaştırılan tasarım — 3 girdi × 3 bulanık küme = tam 27 kural
 
@@ -85,7 +92,20 @@ Veri seti burada iki işe yarar: (1) üyelik fonksiyonu sınırlarını belirlem
 
 ### Klasör
 
-- `bulanik-mantik/` — henüz oluşturulmadı. Ders 1 dosyalarıyla karıştırılmayacak.
+- `bulanik-mantik/` — henüz oluşturulmadı. Diğer derslerin dosyalarıyla karıştırılmayacak.
+
+---
+
+## DERS 3 — MATLAB
+
+**Ödev türü:** Aşamalı final projesi (ayrıntılar ödev metni gelince yazılacak)
+**Durum:** Aşama 1 ödev metni bekleniyor.
+**Not:** Kod MATLAB dilinde yazılacak (Python değil). Veri seti aynı CSV,
+MATLAB'de `readtable` ile okunur.
+
+### Klasör
+
+- `matlab/` — henüz oluşturulmadı.
 
 ---
 
@@ -104,8 +124,10 @@ Veri seti burada iki işe yarar: (1) üyelik fonksiyonu sınırlarını belirlem
 
 ## Çalışma kuralları
 
-1. **İki dersi karıştırma.** Bir istek geldiğinde hangi derse ait olduğu belli
-   değilse sor. "Ödev" kelimesi tek başına hangisi olduğunu belirtmez.
+1. **Üç dersi karıştırma.** Bir istek geldiğinde hangi derse ait olduğu belli
+   değilse sor. "Ödev" / "aşama 1" tek başına hangisi olduğunu belirtmez.
+   Projeler bağımsız: Ders 1'in analizleri, grafikleri veya rapor metni
+   diğer derslere taşınmaz; her ders kendi hocasının istediği şekilde sıfırdan yapılır.
 2. Raporlar İGÜ Bilgisayar Teknolojileri Ödev Yazım Kılavuzu'na uyar:
    Times New Roman 11, 1,5 satır aralığı, kenar boşlukları üst/sağ/alt 2,5 cm
    sol 4 cm, ön sayfalar büyük Romen rakamı, gövde Arap rakamı.
