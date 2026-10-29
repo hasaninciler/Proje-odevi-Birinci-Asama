@@ -16,7 +16,7 @@ ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 | Ders | Klasör | Ödev Danışmanı |
 |---|---|---|
 | 1 — Yapay Zeka Uygulamaları (OYG201) | `asama1/`, `build/` | Öğr. Gör. Çisem Yaşar |
-| 2 — Bulanık Mantık | `bulanik-mantik/` | ? (farklı hoca, henüz öğrenilmedi) |
+| 2 — Bulanık Mantık (BLP274) | `bulanik-mantik/` | Öğr. Gör. İpek Ebru KARAÇAY |
 | 3 — MATLAB | `matlab/` | ? (farklı hoca, henüz öğrenilmedi) |
 
 ---
@@ -60,10 +60,30 @@ ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 
 ## DERS 2 — Bulanık Mantık
 
-**Ödev türü:** Aşamalı final projesi (aşama sayısı/ağırlıkları ödev metni gelince yazılacak)
+**Ders kodu:** BLP274 — **Hoca:** Öğr. Gör. İpek Ebru KARAÇAY
+**Ödev türü:** Aşamalı final projesi
 **Hocanın sınırı:** **En fazla 27 kural.** Fazlası öğrenci için zor olacağından sınırlandı.
-**Durum:** Aşama 1 ödev metni bekleniyor. Aşağıdaki tasarım bir ön fikirdir;
-ödev metni neyi isterse ona göre güncellenecek.
+
+### Aşama 1 — Plan Aşaması (%10) — ödev metni geldi, yapılıyor
+
+Ödev soruları: `bulanik-mantik/kaynaklar/BLP274_plan_asamasi.pdf` (7 madde:
+1 proje adı, 2 öğrenci adı, 3 amaç, 4 problem + mevcut çözümler ve dezavantajları,
+5 piyasadakilerden farkı, 6 avantajlar ve özgün yanlar, 7 veri seti nereden bulundu).
+Duyuru "6 soru" diyor ama PDF'te 7 madde var → hepsi cevaplanacak.
+
+Teslim (tek ZIP, klasör adı `250184009_Hasan_Inciler_ProjeAsama1`):
+1. `250184009_Hasan_Inciler_Rapor.pdf` — 7 maddenin cevabı, yazım kılavuzuna uygun
+2. `250184009_Hasan_Inciler_VeriSetiTanitim.pdf` — ayrı doküman; başlıklar:
+   (1) ad + kaynak bağlantısı, (2) neden seçildi / amaçla ilişkisi,
+   (3) satır, sütun sayısı, dosya formatı, (4) **her değişkenin** adı, açıklaması,
+   veri tipi, değer aralığı (32 sütun)
+3. `250184009_Hasan_Inciler_VeriSeti.csv` — veri seti dosyası (~17 MB, 50 MB sınırının altında)
+
+Dikkat: tanıtım dokümanındaki sayılar teslim edilen CSV ile **birebir aynı** olmalı
+(değer aralıkları doğrudan o dosyadan hesaplanacak). Bu aşamada kod/notebook istenmiyor.
+Yazım kılavuzu Ders 1'deki ile aynı dosya (md5 aynı).
+
+Teslim ZIP'inin adı Ders 1'inkiyle aynı çıkıyor → yerelde `teslim/bulanik-mantik/` altında tutulacak.
 
 ### Kararlaştırılan tasarım — 3 girdi × 3 bulanık küme = tam 27 kural
 
