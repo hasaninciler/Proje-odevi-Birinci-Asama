@@ -64,7 +64,7 @@ ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 **Ödev türü:** Aşamalı final projesi
 **Hocanın sınırı:** **En fazla 27 kural.** Fazlası öğrenci için zor olacağından sınırlandı.
 
-### Aşama 1 — Plan Aşaması (%10) — ödev metni geldi, yapılıyor
+### Aşama 1 — Plan Aşaması (%10) — **Tamamlandı**, teslim tarihi 29/10/2026
 
 Ödev soruları: `bulanik-mantik/kaynaklar/BLP274_plan_asamasi.pdf` (7 madde:
 1 proje adı, 2 öğrenci adı, 3 amaç, 4 problem + mevcut çözümler ve dezavantajları,
@@ -83,15 +83,30 @@ Dikkat: tanıtım dokümanındaki sayılar teslim edilen CSV ile **birebir aynı
 (değer aralıkları doğrudan o dosyadan hesaplanacak). Bu aşamada kod/notebook istenmiyor.
 Yazım kılavuzu Ders 1'deki ile aynı dosya (md5 aynı).
 
-Teslim ZIP'inin adı Ders 1'inkiyle aynı çıkıyor → yerelde `teslim/bulanik-mantik/` altında tutulacak.
+Teslim ZIP'inin adı Ders 1'inkiyle aynı çıkıyor → yerelde `teslim/bulanik-mantik/` altında tutulur.
+
+**Öğrencinin bu ders için istekleri (korunacak):** kaynakça yazılmaz, yabancı yazar
+adı geçmez (Kaggle bağlantısı ödev istediği için kalır), anlatım basit ve sade olur;
+F1/precision gibi teknik terimler kullanılmaz.
+
+Aşama 1 dosyaları:
+- `bulanik-mantik/build/plan_raporu.js` — Plan Raporu (18 sayfa, 7 sorunun hepsi, Tablo-1..4, Grafik-1..2)
+- `bulanik-mantik/build/veri_tanitim.js` — Veri Seti Tanıtım Dokümanı (9 sayfa, 32 değişken, Tablo-1..8)
+- `bulanik-mantik/build/grafikler.py` — Grafik-1 (lead_time bulanık kümeleri), Grafik-2 (süreye göre iptal oranı)
+- `bulanik-mantik/build/derle.sh` — iki geçişli derleme: docx → PDF → sayfa numaralarını ölç → tekrar derle
+  (ör. `build/derle.sh plan_raporu.js aramalar_rapor.json sayfalar_rapor.json <çıktı> rapor`)
+- Bulanık kümeler (Grafik-1): kısa 0–20 tam / 20–60 geçiş; orta 60–120 tam; uzun 180+ tam
+- Ölçülebilir hedef raporda yazılı: "yüksek risk" grubunda gerçek iptal ≥ %55, "düşük risk" ≤ %25
+- PDF'te yazı tipi Liberation Serif (Times New Roman ile aynı ölçüler; ortamda TNR yok).
+  Word dosyaları `teslim/bulanik-mantik/word/` altında.
 
 ### Kararlaştırılan tasarım — 3 girdi × 3 bulanık küme = tam 27 kural
 
 | Girdi | Kümeler | Veri setindeki iptal oranı |
 |---|---|---|
-| `lead_time` | kısa 0-30 / orta 30-120 / uzun 120+ gün | %23 → %40 → %53 |
-| `total_of_special_requests` | yok 0 / az 1 / çok 2+ | %48 → %22 → %18 |
-| `previous_cancellations` | yok 0 / az 1 / çok 2+ | %34 → **%94** → %53 |
+| `lead_time` | kısa 0-30 / orta 31-120 / uzun 121+ gün | %18,6 → %39,5 → %52,2 |
+| `total_of_special_requests` | yok 0 / az 1 / çok 2+ | %47,7 → %22,0 → %21,1 |
+| `previous_cancellations` | yok 0 / az 1 / çok 2+ | %33,9 → **%94,4** → %52,7 |
 
 **Çıktı:** iptal riski 0-100 (düşük / orta / yüksek)
 
@@ -99,9 +114,9 @@ Kural tabanının dayanağı — `lead_time` × özel istek çaprazı (gerçek i
 
 | | istek yok | az | çok |
 |---|---|---|---|
-| kısa | %23 | %14 | %13 |
-| orta | %51 | %26 | %23 |
-| uzun | %66 | %27 | %28 |
+| kısa | %22,6 | %14,1 | %12,5 |
+| orta | %50,6 | %25,7 | %23,2 |
+| uzun | %65,8 | %27,4 | %28,3 |
 
 En riskli köşe: uzun vadeli + hiç özel istek yok. En güvenli: kısa vadeli + çok istek.
 Kurallar bu tablodan türetilecek, uydurulmayacak.
@@ -112,7 +127,7 @@ Veri seti burada iki işe yarar: (1) üyelik fonksiyonu sınırlarını belirlem
 
 ### Klasör
 
-- `bulanik-mantik/` — henüz oluşturulmadı. Diğer derslerin dosyalarıyla karıştırılmayacak.
+- `bulanik-mantik/` — Diğer derslerin dosyalarıyla karıştırılmayacak.
 
 ---
 

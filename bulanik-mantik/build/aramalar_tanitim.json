@@ -1,0 +1,9 @@
+{"_basla": "GİRİŞ Bu doküman",
+ "tablolar": ["Tablo-1. Veri Setinin Kimlik Bilgileri", "bastan"],
+ "giris": "GİRİŞ Bu doküman",
+ "b1": "1. VERİ SETİNİN ADI VE KAYNAĞI", "b2": "2. VERİ SETİNİN SEÇİLME NEDENİ", "b3": "3. VERİ SETİNİN GENEL YAPISI",
+ "b3_1": "3.1. Satır, Sütun", "b3_2": "3.2. Boş Değerler", "b4": "4. DEĞİŞKENLERİN TANITIMI",
+ "b4_1": "4.1. Otel, Varış", "b4_2": "4.2. Misafir Bilgileri", "b4_3": "4.3. Satış, Oda", "b4_4": "4.4. Rezervasyon Durumu",
+ "b4_5": "4.5. Dikkat Edilmesi", "b4_6": "4.6. Projede Kullanılacak",
+ "t1": "Tablo-1. Veri Setinin Kimlik", "t2": "Tablo-2. Veri Setinin Genel", "t3": "Tablo-3. Boş Değer", "t4": "Tablo-4. Otel, Varış",
+ "t5": "Tablo-5. Misafir", "t6": "Tablo-6. Satış", "t7": "Tablo-7. Rezervasyon Durumu", "t8": "Tablo-8. Projede"}
