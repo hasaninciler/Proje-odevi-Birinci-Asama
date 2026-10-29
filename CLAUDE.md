@@ -139,7 +139,7 @@ Veri seti burada iki işe yarar: (1) üyelik fonksiyonu sınırlarını belirlem
 **Not:** Kod MATLAB dilinde (Python değil). Bu ortamda MATLAB/Octave yok; MATLAB'da
 çalıştırma ve `readtable` kontrolünü öğrenci kendisi yapar.
 
-### Aşama 1 — Plan (%10) — planlanıyor
+### Aşama 1 — Plan (%10) — **Hazırlandı** (teslim tarihi 29/10/2026 varsayıldı, öğrenci teyit etmedi)
 
 Sorular: `matlab/kaynaklar/BLP272_plan_asamasi.pdf` (8 madde: 1 ad, 2 öğrenci, 3 amaç,
 4 problem + mevcut çözümler/dezavantajlar, 5 piyasadan farkı, 6 avantaj/özgün yanlar,
@@ -158,6 +158,16 @@ sonuçları `jsonencode` ile JSON + PNG olarak dışa aktarır; tek sayfalık ba
 (HTML/CSS/JS) bu JSON'u gösterir. Ana iş MATLAB'da kalmalı (ders MATLAB). Kesinleşmedi —
 öğrencinin onayı ve hocaya "web sitesi MATLAB çıktısını gösterebilir mi" teyidi bekleniyor.
 Yapay Zeka dersinde hoca ödevin Claude ile yapıldığını anladı (öğrenci söyledi, 29/10/2026 sonrası).
+
+Aşama 1 dosyaları:
+- `matlab/build/plan_raporu.js` — Plan Raporu (17 sayfa, 8 sorunun hepsi, Tablo-1..5, grafik yok)
+- `matlab/build/veri_tanitim.js` — Veri Seti Tanıtım (11 sayfa; değişkenler türe göre: 20 sayısal,
+  11 kategorik, 1 tarih + oluşturulacak varis_tarihi; MATLAB aktarma ayarları ve kodu; kalite sorunları)
+- `matlab/veri_aktar.m` — tanıtım dokümanındaki aktarma kodu. **Bu ortamda test edilmedi**;
+  öğrenci MATLAB'da çalıştırıp 119390×33 sonucunu doğrulamalı.
+- Arayüz kararı (MATLAB uygulaması mı web sitesi mi) raporda Yapı aşamasına bırakıldı;
+  öğrenci "2. aşamada düşünürüz" dedi.
+- Bulanık Mantık'taki gibi: kaynakça yok, yabancı isim yok, sade dil.
 
 ### Klasör
 
