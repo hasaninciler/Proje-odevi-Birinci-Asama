@@ -90,7 +90,16 @@ kullanılır. Ders notları: `docs/kaynaklar/dersler/hafta3..7_*.pdf`.
 | 6 regresyon | `LinearRegression`, MAE, **`LogisticRegression(max_iter=1000/5000)`**, `predict`, `predict_proba`, oluştur → fit → predict |
 | 7 model değerlendirme | **`train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)`**, `accuracy_score`, `precision_score`/`recall_score`/`f1_score`, **`classification_report`**, **`confusion_matrix` + `ConfusionMatrixDisplay(matris).plot()`**, `predict_proba(X)[:,1] >= 0.3` ile **eşik değiştirme**, dengesiz sınıflarda doğruluğun yanıltıcılığı |
 
-**İşlenMEMİŞ (kullanma):** Random Forest, Karar Ağacı, KNN, XGBoost, ROC-AUC, cross validation.
+| 8 sınıflandırma algoritmaları | **`StandardScaler` sadece `X_egitim`'e fit** ("veri sızıntısı: en önemli kural"; fillna değeri de eğitimden), MinMaxScaler, KNN (`n_neighbors`), Karar Ağacı (`max_depth`, `plot_tree`), Naive Bayes, **Random Forest (`n_estimators=100, random_state=42`)**, `feature_importances_`, `joblib` ile kaydetme, `metrikler()` yardımcı fonksiyonu |
+
+Hocanın notebook'ları: `docs/kaynaklar/dersler/hafta4..8_*_OGRENCI.ipynb`. **8. haftanın mini projesi
+"Model Yarışması (Proje 2. Aşama Provası)"** → Aşama 2 notebook'u bu kalıbı izler: 5 model
+(LR max_iter=5000 ölçekli, KNN ölçekli, Karar Ağacı, Naive Bayes, RF) aynı ayrımla, `tablo`
+DataFrame'i, en iyisini seç, karmaşıklık matrisi `ConfusionMatrixDisplay(matris, display_labels=[...]).plot(cmap="Blues")`,
+`classification_report(..., target_names=[...])`. Değişken adları hocanınki gibi: `X_egitim, X_test,
+y_egitim, y_test, olcekleyici, X_egitim_olc, X_test_olc, tablo, en_iyi`.
+
+**İşlenMEMİŞ (kullanma):** XGBoost, ROC-AUC, cross validation, GridSearch.
 **StandardScaler:** ders notlarında yok ama Aşama 2 kontrol listesi açıkça istiyor → kullanılır,
 sade anlatılır. Gerekçe veride görülüyor: ölçeklemesiz LR "yakınsamadı" uyarısı veriyor.
 
@@ -101,7 +110,23 @@ sade anlatılır. Gerekçe veride görülüyor: ölçeklemesiz LR "yakınsamadı
 | kopyalar dahil | 0,710 | 0,741 | 0,740 (0,841) |
 | kopyalar silinmiş | 0,524 | 0,601 | 0,626 (0,755) |
 
-Plan (öğrenci onayı bekleniyor): model = Lojistik Regresyon (derste işlendi; RF değil),
+**Model yarışması (ham veride drop_duplicates → 87.396 satır; country modu/frekansı sadece eğitimden):**
+
+| Model | Acc | Prec | Recall | F1 |
+|---|---|---|---|---|
+| Random Forest | 0,849 | 0,760 | 0,657 | **0,705** |
+| Karar Ağacı | 0,800 | 0,631 | 0,642 | 0,636 |
+| KNN (k=5) | 0,800 | 0,649 | 0,583 | 0,614 |
+| Naive Bayes | 0,639 | 0,415 | 0,799 | 0,547 |
+| Lojistik Regresyon | 0,785 | 0,661 | 0,436 | 0,525 |
+
+Hoca kalıbı Recall'a göre sıralıyor (kanser örneği) → otelde Naive Bayes seçilirdi (precision 0,415).
+Otelde iki hata da maliyetli (kaçan iptal = boş oda, yanlış alarm = fazla satılan oda) → **F1'e göre
+sırala → Random Forest.** RF eşik: 0,5 → F1 0,705; 0,4 → F1 0,728 (recall 0,759); 0,3 → F1 0,722.
+Kopyalar silinince iptal oranı %37,0 → %27,5'e düşüyor (kopyaların çoğu iptal edilmiş kayıt).
+RF en önemli: lead_time, country_frekans, adr. %80 F1 hedefi tutmuyor → raporda dürüstçe açıklanacak.
+
+Eski plan (geçersiz, 8. hafta notebook'u gelmeden önce): model = Lojistik Regresyon (derste işlendi; RF değil),
 eşik değiştirme derste işlendiği için kullanılabilir. Öğrenci hocanın tahtada çözdüğü
 .ipynb dosyalarını göndermeyi teklif etti → kod üslubu onlara uydurulacak.
 `docs/imza/` bu konteynerde yok → beyan sayfası için imzanın tekrar yüklenmesi gerekiyor.
