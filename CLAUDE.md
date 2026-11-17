@@ -32,7 +32,7 @@ ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 | Aşama | Ağırlık | Durum |
 |---|---|---|
 | Aşama 1 — Veri analizi ve ön işleme | %15 | **Tamamlandı**, teslim tarihi 13/10/2026 |
-| Aşama 2 — Model eğitimi ve değerlendirme | %35 | **Yayınlandı (17/11/2026)**, başlanmadı |
+| Aşama 2 — Model eğitimi ve değerlendirme | %35 | Notebook hazır (Claude'da çalıştırıldı), rapor yazılmadı |
 | Aşama 3-5 | %50 | Henüz yayınlanmadı |
 
 ### Aşama 2 — Model Eğitimi ve Değerlendirme (%35)
@@ -125,6 +125,12 @@ Otelde iki hata da maliyetli (kaçan iptal = boş oda, yanlış alarm = fazla sa
 sırala → Random Forest.** RF eşik: 0,5 → F1 0,705; 0,4 → F1 0,728 (recall 0,759); 0,3 → F1 0,722.
 Kopyalar silinince iptal oranı %37,0 → %27,5'e düşüyor (kopyaların çoğu iptal edilmiş kayıt).
 RF en önemli: lead_time, country_frekans, adr. %80 F1 hedefi tutmuyor → raporda dürüstçe açıklanacak.
+
+**Aşama 2 notebook'u:** `asama2/250184009_Hasan_Inciler_ModelEgitimi.ipynb` (29 hücre, üretici
+`build/asama2_notebook.py`). Kesin sonuçlar: RF test Acc 0,849 / Prec 0,767 / Rec 0,650 / F1 0,704;
+matris TN 11726, FP 949, FN 1682, TP 3123 (test 17.480 satır, iptal 4.805). Eşik 0,4 → F1 0,728.
+Eşik tablosunda 0,5 satırı `predict` sonucundan alınır (>= 0,5 ile eşitlik farkı çıkıyordu).
+Öğrenci notebook'u Colab'da kendisi çalıştırıp teslim edecek (Colab çıktısı şart).
 
 Eski plan (geçersiz, 8. hafta notebook'u gelmeden önce): model = Lojistik Regresyon (derste işlendi; RF değil),
 eşik değiştirme derste işlendiği için kullanılabilir. Öğrenci hocanın tahtada çözdüğü
