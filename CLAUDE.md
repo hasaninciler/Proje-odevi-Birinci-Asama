@@ -50,8 +50,32 @@ Proje Yazım Kılavuzu" isteniyor (`docs/kaynaklar/asama2/proje-yazim-kilavuzu-y
 Aşama 1'deki Bilgisayar Teknolojileri kılavuzundan FARKLI dosya (md5 farklı) → kurallar yeniden okunacak.
 
 **Hatırlatma:** Bu derste Aşama 1'in Claude ile yapıldığı hoca tarafından anlaşıldı.
-Aşama 2'ye, öğrencinin LMS'ye gerçekte yüklediği Aşama 1 sürümü üzerinden devam edilecek
-(öğrenciden istendi; depodaki sürüm 12/10/2026 tarihli son Claude sürümü).
+
+**LMS'ye yüklenen Aşama 1 (öğrenci 17/11/2026'da gönderdi):**
+- Rapor PDF: Claude'un 12/10 sürümüyle aynı (26 sayfa, 13/10/2026, Kaynakça'da Antonio vd.).
+  Aşama 1 raporunda verilen sözler: sınıf oranı korunarak (stratify) bölme; Lojistik Regresyon
+  temel model, Rastgele Orman ve XGBoost karşılaştırma; hedef **F1 > %80**; ROC-AUC da anılmış.
+- Notebook: **öğrenci kendisi düzenlemiş** → `asama1/` içindeki dosya artık onun sürümü (47 hücre).
+  Üslubu: yorumlar küçük harfle, noktalama az, sade ("kütüphaneler yüklendi"). Aşama 2 notebook'u
+  **bu üsluba uyacak**. Sadece pandas + matplotlib.
+
+**Yeni kılavuz farkları (eskisiyle kelime kelime karşılaştırıldı):** biçim kuralları aynı.
+Farklar: (1) kapak ve formda bölüm adı "YAZILIM, UYGULAMA GELİŞTİRME VE ÇÖZÜMLEME BÖLÜMÜ";
+(2) Kaynakça artık "(Var ise)" → isteğe bağlı; (3) Giriş'teki literatür taraması ve numaralı
+atıf şartı kaldırılmış (eski kılavuzdaki IEEE/APA çelişkisi bu kılavuzda yok).
+
+**Deneme sonuçları (80/20, stratify, random_state=42, StandardScaler sadece eğitime fit):**
+
+| | Accuracy | Precision | Recall | F1 |
+|---|---|---|---|---|
+| LR, kopyalar dahil | 0,808 | 0,808 | 0,633 | 0,710 |
+| RF (100 ağaç), kopyalar dahil | 0,895 | 0,889 | 0,819 | **0,853** |
+| LR, kopyalar silinmiş (87.111 satır) | 0,786 | 0,665 | 0,432 | 0,524 |
+| RF, kopyalar silinmiş | 0,853 | 0,775 | 0,650 | **0,707** |
+
+31.994 birebir kopya satır hem eğitimde hem testte bulunabildiği için kopyalar dahilken skor
+şişiyor. Kopyalar silinince RF F1 %80 hedefinin altında kalıyor. **Karar öğrencide (bekleniyor).**
+`docs/imza/` bu konteynerde yok → beyan sayfası için imzanın tekrar yüklenmesi gerekiyor.
 
 ### Klasörler
 
