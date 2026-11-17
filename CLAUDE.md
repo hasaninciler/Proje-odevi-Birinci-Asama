@@ -32,7 +32,26 @@ ayrı klasör, ayrı kod, ayrı rapor. Birinin kodu/metni diğerine kopyalanmaz.
 | Aşama | Ağırlık | Durum |
 |---|---|---|
 | Aşama 1 — Veri analizi ve ön işleme | %15 | **Tamamlandı**, teslim tarihi 13/10/2026 |
-| Aşama 2-5 | %85 | Henüz yayınlanmadı |
+| Aşama 2 — Model eğitimi ve değerlendirme | %35 | **Yayınlandı (17/11/2026)**, başlanmadı |
+| Aşama 3-5 | %50 | Henüz yayınlanmadı |
+
+### Aşama 2 — Model Eğitimi ve Değerlendirme (%35)
+
+Kontrol listesi: `docs/kaynaklar/asama2/OYG201_asama2_kontrol_listesi.pdf`
+(1 öğrenci adı, 2 proje adı, 3 veri bölme oranı + parametre + ölçekleme yöntemi + scaler'ın
+sadece eğitim verisine fit edildiği, 4 sklearn algoritması + neden + temel parametreler,
+5 test verisinde accuracy/precision/recall/F1 + karmaşıklık matrisi görseli ve yorumu).
+
+Teslim (ZIP `250184009_Hasan_Inciler_ProjeAsama2`): `_Rapor.pdf` + `_ModelEgitimi.ipynb`
+(Colab'da tüm hücreler çalıştırılmış, yorum satırlı, metrikler ve karmaşıklık matrisi görünür).
+
+**DİKKAT — yeni kılavuz:** Bu aşamada "Yazılım, Uygulama Geliştirme ve Çözümleme Bölümü
+Proje Yazım Kılavuzu" isteniyor (`docs/kaynaklar/asama2/proje-yazim-kilavuzu-yazilim-bolumu.pdf`).
+Aşama 1'deki Bilgisayar Teknolojileri kılavuzundan FARKLI dosya (md5 farklı) → kurallar yeniden okunacak.
+
+**Hatırlatma:** Bu derste Aşama 1'in Claude ile yapıldığı hoca tarafından anlaşıldı.
+Aşama 2'ye, öğrencinin LMS'ye gerçekte yüklediği Aşama 1 sürümü üzerinden devam edilecek
+(öğrenciden istendi; depodaki sürüm 12/10/2026 tarihli son Claude sürümü).
 
 ### Klasörler
 
