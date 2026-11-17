@@ -75,6 +75,35 @@ atıf şartı kaldırılmış (eski kılavuzdaki IEEE/APA çelişkisi bu kılavu
 
 31.994 birebir kopya satır hem eğitimde hem testte bulunabildiği için kopyalar dahilken skor
 şişiyor. Kopyalar silinince RF F1 %80 hedefinin altında kalıyor. **Karar öğrencide (bekleniyor).**
+
+### ⚠ EN ÖNEMLİ KURAL: sadece derste işlenenler kullanılır
+
+Öğrenci (17/11/2026): Aşama 1'de derste henüz işlenmemiş şeyler (F1 vb.) yazıldığı için
+yakalandı. Bundan sonra **yalnızca ders notlarında geçen** yöntem, fonksiyon ve terimler
+kullanılır. Ders notları: `docs/kaynaklar/dersler/hafta3..7_*.pdf`.
+
+| Hafta | İşlenenler |
+|---|---|
+| 3 numpy/pandas | `fillna`, `dropna`, `duplicated().sum()`, **`drop_duplicates()`** |
+| 4 matplotlib | plot, bar, hist, scatter, legend, `subplots(2,2)`, `savefig` |
+| 5 makine öğrenmesi | denetimli/denetimsiz, X/y, regresyon mu sınıflandırma mı, `get_dummies`, one-hot, basit eşik sınıflandırıcı |
+| 6 regresyon | `LinearRegression`, MAE, **`LogisticRegression(max_iter=1000/5000)`**, `predict`, `predict_proba`, oluştur → fit → predict |
+| 7 model değerlendirme | **`train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)`**, `accuracy_score`, `precision_score`/`recall_score`/`f1_score`, **`classification_report`**, **`confusion_matrix` + `ConfusionMatrixDisplay(matris).plot()`**, `predict_proba(X)[:,1] >= 0.3` ile **eşik değiştirme**, dengesiz sınıflarda doğruluğun yanıltıcılığı |
+
+**İşlenMEMİŞ (kullanma):** Random Forest, Karar Ağacı, KNN, XGBoost, ROC-AUC, cross validation.
+**StandardScaler:** ders notlarında yok ama Aşama 2 kontrol listesi açıkça istiyor → kullanılır,
+sade anlatılır. Gerekçe veride görülüyor: ölçeklemesiz LR "yakınsamadı" uyarısı veriyor.
+
+**Lojistik Regresyon denemeleri (80/20, stratify, rs=42, StandardScaler eğitime fit):**
+
+| | eşik 0,5 F1 | eşik 0,4 F1 | eşik 0,3 F1 (recall) |
+|---|---|---|---|
+| kopyalar dahil | 0,710 | 0,741 | 0,740 (0,841) |
+| kopyalar silinmiş | 0,524 | 0,601 | 0,626 (0,755) |
+
+Plan (öğrenci onayı bekleniyor): model = Lojistik Regresyon (derste işlendi; RF değil),
+eşik değiştirme derste işlendiği için kullanılabilir. Öğrenci hocanın tahtada çözdüğü
+.ipynb dosyalarını göndermeyi teklif etti → kod üslubu onlara uydurulacak.
 `docs/imza/` bu konteynerde yok → beyan sayfası için imzanın tekrar yüklenmesi gerekiyor.
 
 ### Klasörler
